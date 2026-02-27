@@ -4,7 +4,7 @@ import Cta from "../components/Cta";
 import BIF from '../assets/bif.png'
 import RWP from '../assets/rwp.png'
 import SG from '../assets/sg.jpg'
-import EIG from '/public/p_invest.png'
+import EIG from '/p_invest.png'
 
 function Investment(){
     return(
