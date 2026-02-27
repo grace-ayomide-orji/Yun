@@ -1,18 +1,21 @@
 import { useRef , useState } from "react";
-import emailjs from "emailjs-com";
+import emailjs from "@emailjs/browser"
 import Layout from "../components/Layout";
-import loader from '../assets/loader.svg'
+import{ Check, X, LoaderCircle} from "lucide-react"
 
 
 const Toast = ({ message, type, onClose }) => {
     return (
         <div className="fixed inset-0 z-[1000000] m-auto sm:w-[350px] sm:h-[250px] w-[280px] h-[220px] flex flex-col justify-center items-center px-4 py-2 rounded-md shadow-lg text-center bg-[#fff]">
-            <p className="sm:text-[50px] text-[40px] mb-[30px]">{type === "success" ? "✅" : "❌"}</p>
-            <p className="text-[18px]">{message}</p>
-            <button className="ml-4 text-[18px] bg-[#003087] px-[50px] py-[8px] mt-[20px] text-white 
-            hover:bg-[#3B82F6]" 
-            onClick={onClose}>Okay</button>
+        <div className={`rounded-full w-12 h-12 flex justify-center items-center  mb-[10px]
+            ${type === "success" ? "bg-green-100 !text-green-600" : "bg-red-100 !text-red-600"}`}>
+            {type === "success" ? <Check className="w-5 h-5" /> : <X className="w-5 h-5"/>}
         </div>
+        <p className="text-[18px]">{message}</p>
+        <button className="ml-4 text-[18px] bg-[#801B36] px-[50px] py-[8px] mt-[20px] text-white 
+        hover:bg-[#9A2645] rounded-[8px]" 
+        onClick={onClose}>Okay</button>
+    </div>
     );
 };
 
@@ -29,7 +32,7 @@ function Contact() {
         setIsSubmitting(true)
         try{
 
-            const result = await emailjs.sendForm(
+            await emailjs.sendForm(
                 import.meta.env.VITE_EMAILJS_SERVICE_ID,
                 import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
                 form.current,
@@ -79,9 +82,11 @@ function Contact() {
                         <input required type="email" name="email" placeholder="Email"/>
                         <input required type="tel" name="tel" placeholder="Phone (Optional)"/>
                         <textarea name="message"  placeholder="Additional Message" className="pt-[10px]"></textarea>
-                        <button type="submit" disabled={isSubmitting}> {isSubmitting ? (
-                            <img src={loader} alt="Loading..." />
-                        ) : ("Send Message" )}</button>
+                        <button type="submit" disabled={isSubmitting || toast} className="flex justify-center items-center disabled:opacity-60 disabled:cursor-not-allowed"> {isSubmitting ? (
+                            <LoaderCircle className="animate-spin h-5 w-5"/>
+                        ) : (
+                            "Send Message "
+                        )}</button>
 
                         
                     </form>

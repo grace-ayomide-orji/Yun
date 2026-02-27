@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import Logo from '../assets/yun_capital_logo_2.png';
+import { Mail} from "lucide-react"
 function Footer (){
     const year = new Date().getFullYear();
     return (
@@ -19,9 +20,9 @@ function Footer (){
 
                 <a aria-label="Facebook" className="nav-link-icon" href="/" title='Facebook'>🅕</a>
 
-                <a aria-label="X" className="nav-link-icon" href="/" title='LinkedIn'>🅛</a>
+                <a aria-label="LinkedIn" className="nav-link-icon" href="/" title='LinkedIn'>🅛</a>
 
-                <a aria-label="Email" className="nav-link-icon" href="mailto:info@yuncapital.com" target='_blank' title='Email'>✉</a>
+                <a aria-label="Email" className="nav-link-icon" href="mailto:info@yuncapital.com" target='_blank' title='Email'><Mail /></a>
 
             </div>
         </div>

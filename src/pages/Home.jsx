@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Layout from "../components/Layout";
 import Carousel from "../components/Carousel";
 import Cta from "../components/Cta";
-import WWA from '/public/who_we_are.png'
+import WWA from '/who_we_are.png'
 
 
 function  Home(){
@@ -40,7 +40,7 @@ function  Home(){
                         <p>
                         Invest in opportunities that align with your values, from clean energy to education, while achieving strong returns.
                         </p>
-                        <Link to='#' className="learn-more">Learn More</Link>
+                        <Link to='/purpose-driven-investment' className="learn-more">Learn More</Link>
                     </div>
 
                     <div className="card" data-aos="fade-up" data-aos-easing="ease-in-out">
